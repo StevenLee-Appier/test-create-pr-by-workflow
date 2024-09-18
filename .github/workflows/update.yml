@@ -13,9 +13,11 @@ jobs:
     needs: [update-file]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: Update Fixture."
+          branch: "chroe: update fixture"
          
                 
           
