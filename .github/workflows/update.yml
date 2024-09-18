@@ -1,0 +1,16 @@
+name: "Update Some File and create PR to origin PR"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "some change text\n" >> ./main.txt
+  create-commit-and-PR:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: peter-evans/create-pull-request@v7
+          
