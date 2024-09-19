@@ -1,1 +1,2 @@
 Some text content in main file.
+some change text\n
