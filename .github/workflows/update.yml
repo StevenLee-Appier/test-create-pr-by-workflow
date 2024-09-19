@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "some change text\n" >> ./main.txt
       - run: rm ./dist
+      - run: echo "some change text\n" >> ./main.txt
       - uses: peter-evans/create-pull-request@v7
+        if: ${{ always() }}
         with:
           commit-message: "chore: Update Fixture."
           branch: "bot/update-fixture"
