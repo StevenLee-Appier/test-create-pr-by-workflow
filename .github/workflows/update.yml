@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "some change text\n" >> ./main.txt
+      - run: rm ./dist
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: Update Fixture."
