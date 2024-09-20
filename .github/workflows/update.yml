@@ -4,13 +4,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-file:
+  update-and-create-pr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "some change text\n" >> ./main.txt
-  create-commit-and-PR:
-    runs-on: ubuntu-latest
-    steps:
+      - run: rm ./dist
       - uses: peter-evans/create-pull-request@v7
+        if: ${{ always() }}
+        with:
+          commit-message: "chore: Update Fixture."
+          branch: "bot/update-fixture"
+          token: ${{ secrets.GITHUB_TOKEN }}
           
